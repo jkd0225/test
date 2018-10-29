@@ -4,14 +4,14 @@
 
 
 
-	<div class="panel panel-primary" style="overflow: auto;height: 50%;">
+	<div class="panel panel-primary" style="overflow: auto;height: 45%;">
 	<div class="panel-heading">${vo.title }
 	<span class="pull-right">${vo.regdate }</span></div>
     <div class="panel-body">${vo.content }
 	</div>
   	</div>
   	
-	<div class="panel panel-primary" style="overflow: auto;height: 50%;">
+	<div class="panel panel-primary" style="overflow: auto;height: 45%;">
 	<div class="panel-heading">Comment</div>
     <div class="panel-body" id="commentList">
     <c:forEach var="vo" items="${list }">

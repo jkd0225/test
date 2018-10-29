@@ -49,5 +49,7 @@
 		<websocket:sockjs/>
 	</websocket:handlers>
 	
+	<beans:bean id="naverLoginBO" class="com.jhta.test1.controller.NaverLoginBO"/>
+	
 	
 </beans:beans>

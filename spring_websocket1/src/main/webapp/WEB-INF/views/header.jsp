@@ -16,6 +16,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="<c:url value='/room?user_id=aaa'/>">채팅방</a></li>
         <li><a href="<c:url value='/list'/>">게시판</a></li>
+        <li><a href="<c:url value='/naverLogin'/>">로그인</a></li>
         <li><a href="#contact">CONTACT</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE

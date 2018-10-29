@@ -28,4 +28,6 @@
 	<context:component-scan base-package="com.jhta.test1">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
+	
+
 </beans>
