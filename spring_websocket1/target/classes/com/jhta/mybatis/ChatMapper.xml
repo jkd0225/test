@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.ChatMapper">
+	<insert id="insert" parameterType="com.jhta.test1.vo.ChatVo">
+		insert into gchat values(chat_seq.nextval,#{sender},#{receiver},#{content},#{room},0,sysdate)
+	</insert>
+
+	<select id="list" parameterType="int" resultType="com.jhta.test1.vo.ChatVo">
+		<![CDATA[ SELECT * FROM gchat WHERE room = #{room} and regdate >= TO_CHAR(SYSDATE-7,'YYYYMMDD') order by num]]>
+	</select>
+	<select id="getRoom" parameterType="string" resultType="com.jhta.test1.vo.RoomVo">
+		select * from room where user_id = #{user_id}
+	</select>
+	<update id="read" parameterType="com.jhta.test1.vo.ChatVo">
+		update gchat set read = 1 where room = #{room} and sender != #{sender}
+	</update>
+</mapper>  

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.GboardMapper">
+	<sql id="search">
+		<if test="field!=null and field!=''">
+			where ${field} like '%'|| #{keyword} ||'%'
+		</if>
+	</sql>
+	<insert id="insert" parameterType="gboard">
+		insert into gboard values(gboard_seq.nextval,#{title},#{content},sysdate)
+	</insert>
+	<select id="list" parameterType="map" resultType="gboard">
+		select * from
+		(
+			select aa.*,rownum rnum from
+			(
+				select * from gboard
+				<include refid="search"/>
+				order by num desc
+			)aa
+		)
+		<![CDATA[ where rnum>=#{startRow} and rnum<=#{endRow} ]]>
+	</select>
+	<select id="getCount" parameterType="map" resultType="int">
+		select NVL(count(*),0) cnt from gboard
+		<include refid="search"/>
+	</select>
+	<select id="detail" parameterType="int" resultType="gboard">
+		select * from gboard where num = #{num}
+	</select>
+</mapper>

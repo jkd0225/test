@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name=".main" template="/WEB-INF/views/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/content.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+	</definition>
+	<definition name=".list" template="/WEB-INF/views/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/list.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+	</definition>
+	<definition name=".room" extends=".main">
+		<put-attribute name="content" value="/WEB-INF/views/room.jsp"/>
+	</definition>
+	<definition name=".chat" template="/WEB-INF/views/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/chatHeader.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/chat.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+	</definition>
+	<definition name=".t_board" extends=".main">
+		<put-attribute name="content" value="/WEB-INF/views/t_board.jsp"/>
+	</definition>
+	<definition name=".detail" extends=".main">
+		<put-attribute name="content" value="/WEB-INF/views/detail.jsp"/>
+	</definition>
+	<!-- 
+	<definition name=".admin.memberlist" extends=".main">
+		<put-attribute name="content" value="/WEB-INF/views/admin/memberlist.jsp"/>
+	</definition>
+	<definition name=".admin.notice" extends=".main">
+		<put-attribute name="content" value="/WEB-INF/views/admin/notice.jsp"/>
+	</definition>
+	<definition name=".member.mypage" extends=".main">
+		<put-attribute name="content" value="/WEB-INF/views/member/mypage.jsp"/>
+	</definition>
+	 -->
+	<!-- 
+		.member.login.loginForm
+		value="/WEB-INF/views/member/login/loginForm.jsp
+	 -->
+	 <definition name=".*.*.*" extends=".main">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
+	</definition>
+	 <!-- 
+	 	뷰이름이 .member.mypage 라면 
+	 	/WEB-INF/views/member/mypage.jsp
+	 	
+	 	뷰이름이 .admin.notice 라면
+	 	/WEB-INF/views/admin/notice.jsp
+	  -->
+	<definition name=".*.*" extends=".main">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
+	</definition>
+</tiles-definitions>
+
+
+
+
+
+
+
