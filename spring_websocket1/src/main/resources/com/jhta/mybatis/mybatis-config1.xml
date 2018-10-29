@@ -5,10 +5,12 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.jhta.test1.vo.GboardVo" alias="gboard"/>
+		<typeAlias type="com.jhta.test1.vo.GcommentVo" alias="gcomment"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="com/jhta/mybatis/ChatMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/GboardMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/GcommentMapper.xml"/>
 	</mappers>
 </configuration>  

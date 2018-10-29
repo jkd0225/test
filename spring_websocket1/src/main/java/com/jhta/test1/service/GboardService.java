@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.jhta.test1.dao.GboardDao;
 import com.jhta.test1.vo.GboardVo;
+import com.jhta.test1.vo.GcommentVo;
 
 @Service
 public class GboardService {
@@ -28,5 +29,8 @@ public class GboardService {
 	
 	public GboardVo detail(int num) {
 		return dao.detail(num);
+	}
+	public List<GcommentVo> commentList(int num){
+		return dao.commentList(num);
 	}
 }

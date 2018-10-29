@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jhta.test1.vo.GboardVo;
+import com.jhta.test1.vo.GcommentVo;
 @Repository
 public class GboardDao {
 	@Autowired
@@ -27,5 +28,9 @@ public class GboardDao {
 	
 	public GboardVo detail(int num) {
 		return session.selectOne("com.jhta.mybatis.GboardMapper.detail", num);
+	}
+	
+	public List<GcommentVo> commentList(int num){
+		return session.selectList("com.jhta.mybatis.GcommentMapper.list", num);
 	}
 }

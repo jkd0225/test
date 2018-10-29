@@ -30,4 +30,7 @@
 	<select id="detail" parameterType="int" resultType="gboard">
 		select * from gboard where num = #{num}
 	</select>
+	<select id="commentList" parameterType="int" resultType="gcomment">
+		select * from gcomment where bnum = #{num} order by cnum
+	</select>
 </mapper>
