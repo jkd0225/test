@@ -31,7 +31,7 @@ public class LoginController {
 		return "naverLogin";
 	}
 	
-	@RequestMapping(value = "/callback.do", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/callback", method = { RequestMethod.GET, RequestMethod.POST })
     public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
             throws IOException {
         System.out.println("¿©±â´Â callback");

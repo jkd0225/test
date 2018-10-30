@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!doctype html>
-<html lang="ko">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
+<title>LoginTest</title>
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js"
 	charset="utf-8"></script>
@@ -21,24 +20,18 @@ h3 {
 	padding: 0.6em;
 }
 </style>
-<script type="text/javascript">
-	$(document).ready(function() {
-		var name = ${result}.response.name;
-		var email = ${result}.response.email;
-		$("#name").html("환영합니다. "+name+"님");
-		$("#email").html(email);
-	  });
-</script>
-
 </head>
 <body>
 	<div
 		style="background-color: #15a181; width: 100%; height: 50px; text-align: center; color: white;">
-		<h3>SIST Naver_Login Success</h3>
+		<h3>SIST Login</h3>
 	</div>
 	<br>
-	<h2 style="text-align: center" id="name"></h2>
-	<h4 style="text-align: center" id="email"></h4>
-
+	<!-- 구글 로그인 화면으로 이동 시키는 URL -->
+	<!-- 구글 로그인 화면에서 ID, PW를 올바르게 입력하면 oauth2callback 메소드 실행 요청-->
+	<div id="google_id_login" style="text-align: center">
+		<a href="${google_url}"><img width="230"
+			src="${pageContext.request.contextPath}/resources/img/btn_google_signin_dark_normal_web@2x.png" /></a>
+	</div>
 </body>
 </html>

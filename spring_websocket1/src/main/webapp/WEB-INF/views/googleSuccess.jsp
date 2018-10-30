@@ -22,19 +22,14 @@ h3 {
 }
 </style>
 <script type="text/javascript">
-	$(document).ready(function() {
-		var name = ${result}.response.name;
-		var email = ${result}.response.email;
-		$("#name").html("환영합니다. "+name+"님");
-		$("#email").html(email);
-	  });
+	console.log(${result});
 </script>
 
 </head>
 <body>
 	<div
 		style="background-color: #15a181; width: 100%; height: 50px; text-align: center; color: white;">
-		<h3>SIST Naver_Login Success</h3>
+		<h3>SIST Google_Login Success</h3>
 	</div>
 	<br>
 	<h2 style="text-align: center" id="name"></h2>
@@ -42,3 +37,4 @@ h3 {
 
 </body>
 </html>
+
