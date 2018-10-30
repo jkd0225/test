@@ -6,11 +6,13 @@
 	<typeAliases>
 		<typeAlias type="com.jhta.test1.vo.GboardVo" alias="gboard"/>
 		<typeAlias type="com.jhta.test1.vo.GcommentVo" alias="gcomment"/>
+		<typeAlias type="com.jhta.test1.vo.MemberVo" alias="member"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="com/jhta/mybatis/ChatMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/GboardMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/GcommentMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/MemberMapper.xml"/>
 	</mappers>
 </configuration>  

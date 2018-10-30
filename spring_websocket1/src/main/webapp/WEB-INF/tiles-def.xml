@@ -26,6 +26,9 @@
 	<definition name=".detail" extends=".main">
 		<put-attribute name="content" value="/WEB-INF/views/detail.jsp"/>
 	</definition>
+	<definition name=".login" extends=".main">
+		<put-attribute name="content" value="/WEB-INF/views/login.jsp"/>
+	</definition>
 	<!-- 
 	<definition name=".admin.memberlist" extends=".main">
 		<put-attribute name="content" value="/WEB-INF/views/admin/memberlist.jsp"/>

@@ -28,7 +28,7 @@ public class LoginController {
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 		System.out.println("³×ÀÌ¹ö:" + naverAuthUrl);
 		model.addAttribute("url", naverAuthUrl);
-		return "naverLogin";
+		return "spring_security_login";
 	}
 	
 	@RequestMapping(value = "/callback", method = { RequestMethod.GET, RequestMethod.POST })
