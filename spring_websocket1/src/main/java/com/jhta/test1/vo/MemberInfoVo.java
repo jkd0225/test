@@ -1,21 +1,54 @@
 package com.jhta.test1.vo;
 
-public class MemberVo {
+import java.util.List;
+
+public class MemberInfoVo {
 	private int id;
 	private String email;
 	private String password;
+	List<AuthVo> authorities;
 
-	public MemberVo() {
+	public MemberInfoVo() {
+	}
+
+	public boolean hasRole(String role) {
+		for(AuthVo vo : authorities) {
+			if(vo.isRole(role)) {
+				return true;				
+			}
+		}
+		return false;
 	}
 
 	
 
-	public MemberVo(int id, String email, String password) {
+	public List<AuthVo> getAuthorities() {
+		return authorities;
+	}
+
+
+
+
+
+	public void setAuthorities(List<AuthVo> authorities) {
+		this.authorities = authorities;
+	}
+
+
+
+
+
+	public MemberInfoVo(int id, String email, String password, List<AuthVo> authorities) {
 		super();
 		this.id = id;
 		this.email = email;
 		this.password = password;
+		this.authorities = authorities;
 	}
+
+
+
+
 
 	public int getId() {
 		return id;

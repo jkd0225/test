@@ -4,10 +4,38 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhta.mybatis.MemberMapper">
 	<insert id="insert" parameterType="member">
-		insert into member values(mem_seq.nextval,#{email},#{password},1,'ROLE_USER')
+		insert into member values(mem_seq.nextval,#{email},#{password},1)
 	</insert>
-	
-	<select id="list" resultType="member">
-		select * from member
+	<insert id="addAuth" parameterType="map">
+		insert into authorities values(#{email},#{authority})
+	</insert>
+	<select id="list" resultMap="memberMap">
+		select id,email from member
 	</select>
+	<select id="auths" resultType="auth">
+		select authority from authorities where email = #{email}
+	</select>
+	
+	<resultMap type="memberInfo" id="memberMap">
+		<result property="id" column="id"/>
+		<result property="email" column="email"/>
+		<collection property="authorities" javaType="java.util.ArrayList" column="email" ofType="auth" select="auths">
+			<result property="authority" column="authority"/>
+		</collection>
+	</resultMap>
+	
+	
+	<select id="getInfo" parameterType="int" resultMap="memberMap">
+		select id,email from member where id = #{id}
+	</select>
+	
+	
+
+	
+	<insert id="insertAuth" parameterType="auth">
+		insert into authorities values(#{email},#{authority})
+	</insert>
+	<delete id="deleteAuth" parameterType="auth">
+		delete from authorities where email = #{email} and authority = #{authority}
+	</delete>
 </mapper>  

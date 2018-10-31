@@ -33,14 +33,14 @@
 		<sec:logout invalidate-session="true" logout-url="/logout"
 			logout-success-url="/login?logout" />
 		<!-- enable csrf protection -->
-		<sec:csrf />
+		<sec:csrf disabled="true"/>
 	</sec:http>
 	<sec:authentication-manager>
 		<sec:authentication-provider>
 			<sec:jdbc-user-service
 				data-source-ref="dataSource"
 				users-by-username-query="SELECT email, password,enabled FROM member WHERE email = ?"
-				authorities-by-username-query="SELECT email, authority FROM member WHERE email = ?" />
+				authorities-by-username-query="SELECT email, authority FROM authorities WHERE email = ?" />
 		</sec:authentication-provider>
 	</sec:authentication-manager>
 </beans>

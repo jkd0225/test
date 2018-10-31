@@ -1,5 +1,7 @@
 package com.jhta.test1.controller;
 
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +26,12 @@ public class MemberController {
 	
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
 	public String create(MemberVo vo) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("email", vo.getEmail());
+		map.put("authority", "ROLE_USER");
 		
 		service.insert(vo);
+		service.addAuth(map);
 		return "redirect:.login";
 	}
 }

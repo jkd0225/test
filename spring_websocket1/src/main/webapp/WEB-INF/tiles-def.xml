@@ -29,6 +29,12 @@
 	<definition name=".login" extends=".main">
 		<put-attribute name="content" value="/WEB-INF/views/login.jsp"/>
 	</definition>
+	<definition name=".naverLogin" extends=".main">
+		<put-attribute name="content" value="/WEB-INF/views/naverLogin.jsp"/>
+	</definition>
+	<definition name=".naverSuccess" extends=".main">
+		<put-attribute name="content" value="/WEB-INF/views/naverSuccess.jsp"/>
+	</definition>
 	<!-- 
 	<definition name=".admin.memberlist" extends=".main">
 		<put-attribute name="content" value="/WEB-INF/views/admin/memberlist.jsp"/>

@@ -7,6 +7,8 @@
 		<typeAlias type="com.jhta.test1.vo.GboardVo" alias="gboard"/>
 		<typeAlias type="com.jhta.test1.vo.GcommentVo" alias="gcomment"/>
 		<typeAlias type="com.jhta.test1.vo.MemberVo" alias="member"/>
+		<typeAlias type="com.jhta.test1.vo.MemberInfoVo" alias="memberInfo"/>
+		<typeAlias type="com.jhta.test1.vo.AuthVo" alias="auth"/>
 	</typeAliases>
 	
 	<mappers>

@@ -16,7 +16,7 @@ public class InsertController {
 	@RequestMapping(value="/insert",method=RequestMethod.POST)
 	public String insert(GboardVo vo) {
 		service.insert(vo);
-		return "redirect:.t_board";
+		return "redirect:/list";
 	}
 	
 }
