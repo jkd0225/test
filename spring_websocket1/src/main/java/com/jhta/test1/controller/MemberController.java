@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,9 @@ import com.jhta.test1.vo.MemberVo;
 public class MemberController {
 	@Autowired
 	private MemberService service;
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String signup(Model model) {
@@ -30,8 +34,11 @@ public class MemberController {
 		map.put("email", vo.getEmail());
 		map.put("authority", "ROLE_USER");
 		
+		String encPassword = passwordEncoder.encode(vo.getPassword());
+		vo.setPassword(encPassword);
+		
 		service.insert(vo);
 		service.addAuth(map);
-		return "redirect:.login";
+		return "redirect:/login";
 	}
 }

@@ -23,12 +23,12 @@ public class LoginController {
 		this.naverLoginBO = naverLoginBO;
 	}
 	
-	@RequestMapping(value="/naverLogin", method= { RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/login", method= { RequestMethod.GET, RequestMethod.POST})
 	public String login(Model model, HttpSession session) {
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 		System.out.println("³×ÀÌ¹ö:" + naverAuthUrl);
 		model.addAttribute("url", naverAuthUrl);
-		return ".naverLogin";
+		return ".login";
 	}
 	
 	@RequestMapping(value = "/callback", method = { RequestMethod.GET, RequestMethod.POST })

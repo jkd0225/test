@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:sec="http://www.springframework.org/schema/security"
@@ -5,6 +6,9 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/security
         http://www.springframework.org/schema/security/spring-security.xsd">
+        
+    <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    
 	<!-- 스프링 시큐리티 설정의 거의 모든 것 -->
 	<sec:http pattern="/css/**" security="none" />
 	<sec:http pattern="/img/**" security="none" />
@@ -18,13 +22,15 @@
 			access="hasRole('ADMIN')" />
 		<!-- 게스트 -->
 		<sec:intercept-url pattern="/" access="permitAll" />
+		<sec:intercept-url pattern="/naverLogin" access="permitAll" />
+		<sec:intercept-url pattern="/**" access="permitAll" />
 		<sec:intercept-url pattern="/login"
 			access="permitAll" />
 		<sec:intercept-url pattern="/signup"
 			access="permitAll" />
 		<!-- 가입자 -->
-		<sec:intercept-url pattern="/**"
-			access="hasRole('USER')" />
+<!-- 		<sec:intercept-url pattern="/**" -->
+<!-- 			access="hasRole('USER')" /> -->
 		<sec:form-login login-page="/login"
 			login-processing-url="/user/login" default-target-url="/"
 			username-parameter="email" password-parameter="password"
@@ -35,8 +41,10 @@
 		<!-- enable csrf protection -->
 		<sec:csrf disabled="true"/>
 	</sec:http>
-	<sec:authentication-manager>
+	
+	<sec:authentication-manager alias="authenticationManager">
 		<sec:authentication-provider>
+			<sec:password-encoder hash="bcrypt"/>
 			<sec:jdbc-user-service
 				data-source-ref="dataSource"
 				users-by-username-query="SELECT email, password,enabled FROM member WHERE email = ?"
