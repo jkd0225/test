@@ -1,8 +1,12 @@
 package com.jhta.test1.vo;
 
+
 public class MemberVo {
 	private int id;
+	
+	
 	private String email;
+
 	private String password;
 
 	public MemberVo() {

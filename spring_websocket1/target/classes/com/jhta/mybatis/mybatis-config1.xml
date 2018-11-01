@@ -9,6 +9,7 @@
 		<typeAlias type="com.jhta.test1.vo.MemberVo" alias="member"/>
 		<typeAlias type="com.jhta.test1.vo.MemberInfoVo" alias="memberInfo"/>
 		<typeAlias type="com.jhta.test1.vo.AuthVo" alias="auth"/>
+		<typeAlias type="com.jhta.test1.vo.TboardVo" alias="tboard"/>
 	</typeAliases>
 	
 	<mappers>
@@ -16,5 +17,6 @@
 		<mapper resource="com/jhta/mybatis/GboardMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/GcommentMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/MemberMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/TboardMapper.xml"/>
 	</mappers>
 </configuration>  

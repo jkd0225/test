@@ -18,6 +18,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="<c:url value='/room?user_id=aaa'/>">채팅방</a></li>
 				<li><a href="<c:url value='/list'/>">게시판</a></li>
+				<li><a href="<c:url value='/tboardList'/>">계층형게시판</a></li>
 				<!-- 로그인 버튼 -->
 				<sec:authorize access="isAnonymous()">
 					<c:url var="loginUrl" value="/login" />

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jhta.mybatis.TboardMapper">
+	<select id="getMaxNum" resultType="int">
+		select NVL(max(num),0) maxnum from TIERED_BOARD
+	</select>
+	<select id="getCount" resultType="int">
+		select NVL(count(num),0) cnt from tiered_board
+	</select>
+	<insert id="insert" parameterType="tboard">
+		insert into tiered_board values(#{num},#{writer},#{title},#{content},#{ref},#{lev},#{step})
+	</insert>
+	<update id="insertReply" parameterType="map">
+		<![CDATA[update tiered_board set step=step+1 where ref=#{ref} and step>#{step}]]>
+	</update>
+	<select id="list" parameterType="map" resultType="tboard">
+		select * from
+		(
+			select aa.*,rownum rnum from
+			(
+				select * from tiered_board
+				ORDER BY REF DESC,STEP ASC
+			)aa
+		)
+		<![CDATA[ where rnum>=#{startRow} and rnum<=#{endRow} ]]>
+	</select>
+	<select id="detail" parameterType="int" resultType="tboard">
+		select * from tiered_board where num=#{num}
+	</select>
+</mapper>  
+
+
+
+
+
+
+
