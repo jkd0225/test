@@ -16,25 +16,32 @@ import com.jhta.test1.vo.TboardVo;
 public class TboardInsert {
 	@Autowired
 	private TboardService service;
+//	
+//	@RequestMapping(value="/tboardInsert", method=RequestMethod.GET)
+//	public String insert() {
+//		return ".board.insert";
+//	}
 	
 	@RequestMapping(value="/tboardInsert", method=RequestMethod.GET)
-	public String insert() {
-		return ".board.insert";
-	}
-	
-	@RequestMapping(value="/tboardReplyInsert", method=RequestMethod.GET)
 	public String insert1(TboardVo vo,Model model) {
 		model.addAttribute("vo", vo);
 		return ".board.insert";
 	}
 	
 	@RequestMapping(value="/tboardInsert", method=RequestMethod.POST)
-	public String insert(TboardVo vo) {
+	public String insert2(TboardVo vo) {
 		int boardNum = service.getMaxNum() + 1;
-		int num = vo.getNum();
-		int ref = vo.getRef();
-		int lev = vo.getLev();
-		int step = vo.getStep();
+		int num = 0;
+		int ref = 0;
+		int lev = 0;
+		int step = 0;
+		
+		if(vo.getNum() != 0) {
+			num = vo.getNum();
+			ref = vo.getRef();
+			lev = vo.getLev();
+			step = vo.getStep();
+		}
 		
 		if(num == 0) {
 			ref = boardNum;

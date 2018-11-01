@@ -18,7 +18,14 @@
 			(
 				select * from gboard
 				<include refid="search"/>
-				order by num desc
+				<choose>
+					<when test="sort!=null and sort!=''">
+						order by #{sort} desc
+					</when>
+					<otherwise>
+						order by num desc
+					</otherwise>
+				</choose>
 			)aa
 		)
 		<![CDATA[ where rnum>=#{startRow} and rnum<=#{endRow} ]]>

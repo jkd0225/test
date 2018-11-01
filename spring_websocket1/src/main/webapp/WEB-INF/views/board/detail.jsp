@@ -10,7 +10,7 @@
 	</div>
 </div>
 <button type="button" class="btn btn-primary" style="float: right;"
-	onclick="location='<c:url value='/tboardReplyInsert?num=${vo.num }&ref=${vo.ref}&lev=${vo.lev}&step=${vo.step}'/>'">답글</button>
+	onclick="location='<c:url value='/tboardInsert?num=${vo.num }&ref=${vo.ref}&lev=${vo.lev}&step=${vo.step}'/>'">답글</button>
 
 
 

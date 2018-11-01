@@ -21,10 +21,11 @@ public class ListController {
 	private GboardService service;
 	
 	@RequestMapping("/list")
-	public String list(@RequestParam(value="pageNum",defaultValue="1")int pageNum, String field, String keyword, Model model) {
+	public String list(@RequestParam(value="pageNum",defaultValue="1")int pageNum,String sort, String field, String keyword, Model model) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("field", field);
 		map.put("keyword", keyword);
+		map.put("sort", sort);
 		
 		int totalRowCount = service.getCount(map);
 		PageUtil pu = new PageUtil(pageNum, totalRowCount, 5, 5);
@@ -36,6 +37,7 @@ public class ListController {
 		model.addAttribute("pu", pu);
 		model.addAttribute("field", field);
 		model.addAttribute("keyword", keyword);
+		model.addAttribute("sort", sort);
 		return ".list";
 	}
 }
