@@ -6,7 +6,10 @@
 
 	<div class="panel panel-primary" style="overflow: auto;height: 45%;">
 	<div class="panel-heading">${vo.title }
-	<span class="pull-right">${vo.regdate }</span></div>
+	<span class="pull-right">${vo.regdate }</span>
+			<button type="button" class="btn btn-primary pull-right" onclick="recommDown()" id="btn1">추천취소</button>
+			<button type="button" class="btn btn-primary pull-right" onclick="recommUp()" id="btn2">추천</button>
+		</div>
     <div class="panel-body">${vo.content }
 	</div>
   	</div>
@@ -23,10 +26,35 @@
   	</div>
 
 <script type="text/javascript">
+	$(document).ready(function(){
+		$("#btn1").hide();
+	});
+	
+	function recommUp(){
+		$.ajax({
+			url:"<c:url value='/recommUp?num=${vo.num}&writer=${vo.writer}'/>",
+			dataType:'json',
+			success:function(data){
+				$("#btn2").hide();
+				$("#btn1").show();
+			}
+		});
+	}
+	function recommDown(){
+		$.ajax({
+			url:"<c:url value='/recommDown?num=${vo.num}&writer=${vo.writer}'/>",
+			dataType:'json',
+			success:function(data){
+				$("#btn1").hide();
+				$("#btn2").show();
+			}
+		});
+	}
+
 	function getList() {
 		$.ajax({
 			url:"<c:url value='/comment?num=${vo.num }'/>",
-			dataTyoe:'json',
+			dataType:'json',
 			success:function(data){
 				$("#commentList").empty();
 				$(data).each(function(i, json){

@@ -20,4 +20,8 @@ public class GcommentService {
 	public List<GcommentVo> list(int num){
 		return dao.list(num);
 	}
+	
+	public int getCount(int num) {
+		return dao.getCount(num);
+	}
 }

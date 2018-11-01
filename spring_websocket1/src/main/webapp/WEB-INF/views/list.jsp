@@ -50,6 +50,7 @@
 					<th>#</th>
 					<th>title</th>
 					<th>date</th>
+					<th>comments</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -58,6 +59,7 @@
 						<td>${vo.num }</td>
 						<td><a href="<c:url value='/detail?num=${vo.num }'/>">${vo.title }</a></td>
 						<td>${vo.regdate }</td>
+						<td>${vo.getComm }</td>
 					</tr>
 				</c:forEach>
 			</tbody>

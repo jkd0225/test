@@ -40,6 +40,10 @@ $(document).ready(function() {
     <input type="text" class="form-control" id="title" name="title" placeholder="title" required>
   </div>
   <div class="form-group">
+		<input type="text" class="form-control" id="writer" name="writer"
+			placeholder="writer" required>
+	</div>
+  <div class="form-group">
     <textarea class="form-control" id="content1" name="content" placeholder="content" maxlength="140" rows="7"></textarea>
   </div>
   <button type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Submit Form</button>

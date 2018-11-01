@@ -20,4 +20,8 @@ public class GcommentDao {
 	public List<GcommentVo> list(int num){
 		return session.selectList("com.jhta.mybatis.GcommentMapper.list", num);
 	}
+	
+	public int getCount(int num) {
+		return session.selectOne("com.jhta.mybatis.GcommentMapper.getCount", num);
+	}
 }

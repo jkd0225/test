@@ -9,4 +9,7 @@
 	<select id="list" parameterType="int" resultType="gcomment">
 		select * from gcomment where bnum = #{num} order by cnum
 	</select>
+	<select id="getCount" parameterType="int" resultType="int">
+		select NVL(count(cnum),0) cnt from gcomment where bnum = #{num}
+	</select>
 </mapper>  

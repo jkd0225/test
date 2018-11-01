@@ -33,4 +33,23 @@ public class GboardService {
 	public List<GcommentVo> commentList(int num){
 		return dao.commentList(num);
 	}
+	
+	public int hitUp(int num) {
+		return dao.hitUp(num);
+	}
+	
+	public int recommUp(Map<String, Object> map) {
+		return dao.recommUp(map);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+

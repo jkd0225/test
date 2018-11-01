@@ -33,4 +33,24 @@ public class GboardDao {
 	public List<GcommentVo> commentList(int num){
 		return session.selectList("com.jhta.mybatis.GcommentMapper.list", num);
 	}
+	
+	public int hitUp(int num) {
+		return session.update("com.jhta.mybatis.GboardMapper.hitUp", num);
+	}
+	
+	public int recommUp(Map<String, Object> map) {
+		return session.update("com.jhta.mybatis.GboardMapper.recommUp", map);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+

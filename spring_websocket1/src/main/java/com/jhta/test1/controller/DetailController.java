@@ -19,6 +19,7 @@ public class DetailController {
 	
 	@RequestMapping(value="/detail",method=RequestMethod.GET)
 	public String detail(int num,Model model) {
+		service.hitUp(num);
 		GboardVo vo = service.detail(num);
 		List<GcommentVo> list = service.commentList(num);
 		
