@@ -26,10 +26,12 @@ public class GrecommInsertController {
 	public String insert1(String writer, int num,Model model) {
 		int bnum = num;
 		int n = 0;
+		int recomm = 0;
 		GrecommVo vo =new GrecommVo(0, writer, bnum);
 		if(service.isRecomm(vo) == null) {
 			n =service.insert(vo);
-			int recomm = service.getRecommCount(bnum);
+			recomm = service.getRecommCount(bnum);
+			System.out.println(recomm);
 			Map<String, Object> map = new HashMap<>();
 			map.put("num", num);
 			map.put("recomm", recomm);
@@ -38,10 +40,10 @@ public class GrecommInsertController {
 		JsonObject obj = new JsonObject();
 		if(n>0) {
 			obj.addProperty("code", true);
+			obj.addProperty("recomm", recomm);
 		}else {
 			obj.addProperty("code", false);
 		}
-		model.addAttribute("isRecomm", "true");
 		return obj.toString();
 	}
 	

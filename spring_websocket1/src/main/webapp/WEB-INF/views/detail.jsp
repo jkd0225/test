@@ -6,18 +6,20 @@
 
 	<div class="panel panel-primary" style="overflow: auto;height: 45%;">
 	<div class="panel-heading">${vo.title }
+	
+	<span id="recomm">${vo.recomm }</span>
 	<span class="pull-right">
 		${vo.hit }
-		${vo.recomm }
+		
 		${vo.regdate }</span>
-	<button type="button" class="btn btn-primary pull-right" onclick="recommDown()" id="btn1">추천취소</button>
-	<button type="button" class="btn btn-primary pull-right" onclick="recommUp()" id="btn2">추천</button>
+<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommDown()" id="btn1">추천취소</button> -->
+<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommUp()" id="btn2">추천</button> -->
 	<c:choose>
 		<c:when test="${isRecomm == 'true' }">
-			<button type="button" class="btn btn-primary pull-right" onclick="recommDown()" id="btn3">추천취소</button>
+			<button type="button" class="btn btn-primary pull-right" id="btn3">추천취소</button>
 		</c:when>
 		<c:otherwise>
-			<button type="button" class="btn btn-primary pull-right" onclick="recommUp()" id="btn4">추천</button>
+			<button type="button" class="btn btn-primary pull-right" id="btn4">추천</button>
 		</c:otherwise>
 	</c:choose>
 			
@@ -38,36 +40,64 @@
   	</div>
 
 <script type="text/javascript">
-	$(document).ready(function(){
-		$("#btn1").hide();
-		$("#btn2").hide();
-	});
+// 	$(document).ready(function(){
+// 		$("#btn1").hide();
+// 		$("#btn2").hide();
+// 	});
 	
-	
-	function recommUp(){
+
+	var recomm = ${vo.recomm};
+	$(document).on("click","#btn4",function(){
 		$.ajax({
 			url:"<c:url value='/recommUp?num=${vo.num}&writer=${vo.writer}'/>",
 			dataType:'json',
 			success:function(data){
-				$("#btn1").show();
-				$("#btn2").hide();
-				$("#btn3").hide();
-				$("#btn4").hide();
+				recomm = data.recomm;
+				$("#btn4").attr("id","btn3");
+				$("#btn3").text("추천취소");
+				$("#recomm").text(recomm);
 			}
 		});
-	}
-	function recommDown(){
+	});
+	
+	$(document).on("click","#btn3",function(){
 		$.ajax({
 			url:"<c:url value='/recommDown?num=${vo.num}&writer=${vo.writer}'/>",
 			dataType:'json',
 			success:function(data){
-				$("#btn2").show();
-				$("#btn1").hide();
-				$("#btn4").hide();
-				$("#btn3").hide();
+				$("#btn3").attr("id","btn4");
+				$("#btn4").text("추천");
+				$("#recomm").text(recomm - 1);
 			}
 		});
-	}
+	});
+	
+// 	function recommUp(){
+// 		$.ajax({
+// 			url:"<c:url value='/recommUp?num=${vo.num}&writer=${vo.writer}'/>",
+// 			dataType:'json',
+// 			success:function(data){
+// 				$("#btn1").show();
+// 				$("#btn2").hide();
+// 				$("#btn3").hide();
+// 				$("#btn4").hide();
+// 				$("#recomm").text("${vo.recomm}");
+// 			}
+// 		});
+// 	}
+// 	function recommDown(){
+// 		$.ajax({
+// 			url:"<c:url value='/recommDown?num=${vo.num}&writer=${vo.writer}'/>",
+// 			dataType:'json',
+// 			success:function(data){
+// 				$("#btn2").show();
+// 				$("#btn1").hide();
+// 				$("#btn4").hide();
+// 				$("#btn3").hide();
+// 				$("#recomm").text("${vo.recomm -1}");
+// 			}
+// 		});
+// 	}
 
 	function getList() {
 		$.ajax({
