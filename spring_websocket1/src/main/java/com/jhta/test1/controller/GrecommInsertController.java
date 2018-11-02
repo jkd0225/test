@@ -1,7 +1,6 @@
 package com.jhta.test1.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,19 +25,23 @@ public class GrecommInsertController {
 	@ResponseBody
 	public String insert1(String writer, int num,Model model) {
 		int bnum = num;
+		int n = 0;
 		GrecommVo vo =new GrecommVo(0, writer, bnum);
 		if(service.isRecomm(vo) == null) {
-			service.insert(vo);
-			int recomm = service.getRecommCount(num);
+			n =service.insert(vo);
+			int recomm = service.getRecommCount(bnum);
 			Map<String, Object> map = new HashMap<>();
 			map.put("num", num);
 			map.put("recomm", recomm);
 			service2.recommUp(map);
 		}
 		JsonObject obj = new JsonObject();
-		
-		obj.addProperty("isrecomm", false);
-		model.addAttribute("isrecomm", true);
+		if(n>0) {
+			obj.addProperty("code", true);
+		}else {
+			obj.addProperty("code", false);
+		}
+		model.addAttribute("isRecomm", "true");
 		return obj.toString();
 	}
 	

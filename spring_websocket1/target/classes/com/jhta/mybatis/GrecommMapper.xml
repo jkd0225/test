@@ -8,13 +8,13 @@
 		insert into grecomm values(grecomm_seq.nextval,#{writer},#{bnum})
 	</insert>
 	<select id="isRecomm" parameterType="grecomm" resultType="grecomm">
-		select * from grecomm where writer = #{writer} and bnum = #{num}
+		select * from grecomm where writer = #{writer} and bnum = #{bnum}
 	</select>
 	<select id="getRecommCount" parameterType="int" resultType="int">
-		select NVL(count(num), 0) cnt from grecomm where bnum = #{num}
+		select NVL(count(num), 0) cnt from grecomm where bnum = #{bnum}
 	</select>
 	<delete id="delete" parameterType="grecomm">
-		delete from grecomm where writer = #{writer} and bnum = #{num}
+		delete from grecomm where writer = #{writer} and bnum = #{bnum}
 	</delete>
 	<select id="list" resultType="grecomm">
 		select * from grecomm

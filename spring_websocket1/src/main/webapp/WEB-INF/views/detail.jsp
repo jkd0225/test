@@ -6,9 +6,21 @@
 
 	<div class="panel panel-primary" style="overflow: auto;height: 45%;">
 	<div class="panel-heading">${vo.title }
-	<span class="pull-right">${vo.regdate }</span>
-			<button type="button" class="btn btn-primary pull-right" onclick="recommDown()" id="btn1">추천취소</button>
-			<button type="button" class="btn btn-primary pull-right" onclick="recommUp()" id="btn2">추천</button>
+	<span class="pull-right">
+		${vo.hit }
+		${vo.recomm }
+		${vo.regdate }</span>
+	<button type="button" class="btn btn-primary pull-right" onclick="recommDown()" id="btn1">추천취소</button>
+	<button type="button" class="btn btn-primary pull-right" onclick="recommUp()" id="btn2">추천</button>
+	<c:choose>
+		<c:when test="${isRecomm == 'true' }">
+			<button type="button" class="btn btn-primary pull-right" onclick="recommDown()" id="btn3">추천취소</button>
+		</c:when>
+		<c:otherwise>
+			<button type="button" class="btn btn-primary pull-right" onclick="recommUp()" id="btn4">추천</button>
+		</c:otherwise>
+	</c:choose>
+			
 		</div>
     <div class="panel-body">${vo.content }
 	</div>
@@ -28,15 +40,19 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#btn1").hide();
+		$("#btn2").hide();
 	});
+	
 	
 	function recommUp(){
 		$.ajax({
 			url:"<c:url value='/recommUp?num=${vo.num}&writer=${vo.writer}'/>",
 			dataType:'json',
 			success:function(data){
-				$("#btn2").hide();
 				$("#btn1").show();
+				$("#btn2").hide();
+				$("#btn3").hide();
+				$("#btn4").hide();
 			}
 		});
 	}
@@ -45,8 +61,10 @@
 			url:"<c:url value='/recommDown?num=${vo.num}&writer=${vo.writer}'/>",
 			dataType:'json',
 			success:function(data){
-				$("#btn1").hide();
 				$("#btn2").show();
+				$("#btn1").hide();
+				$("#btn4").hide();
+				$("#btn3").hide();
 			}
 		});
 	}

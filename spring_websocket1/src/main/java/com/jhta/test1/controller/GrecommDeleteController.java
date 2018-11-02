@@ -24,19 +24,24 @@ public class GrecommDeleteController {
 	@RequestMapping(value="/recommDown",produces="application/json;charset=utf-8")
 	@ResponseBody
 	public String insert(String writer, int num,Model model) {
-		
-		GrecommVo vo =new GrecommVo(0, writer, num);
-		if(service.isRecomm(vo)==null) {
+		int bnum = num;
+		int n = 0;
+		GrecommVo vo =new GrecommVo(0, writer, bnum);
+		if(service.isRecomm(vo)!=null) {
 			service.delete(vo);
-			int recomm = service.getRecommCount(num);
+			int recomm = service.getRecommCount(bnum);
 			Map<String, Object> map = new HashMap<>();
 			map.put("num", num);
 			map.put("recomm", recomm);
 			service2.recommUp(map);
 		}
 		JsonObject obj = new JsonObject();
-		
-		obj.addProperty("isrecomm", false);
+		if(n>0) {
+			obj.addProperty("code", true);
+		}else {
+			obj.addProperty("code", false);
+		}
+		model.addAttribute("isRecomm", "false");
 		
 		return obj.toString();
 	}

@@ -49,8 +49,11 @@
 				<tr>
 					<th>#</th>
 					<th>title</th>
+					<th>코멘트</th>
+					<th>추천수</th>
+					<th>조회수</th>
+					<th>작성자</th>
 					<th>date</th>
-					<th>comments</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -58,8 +61,11 @@
 					<tr>
 						<td>${vo.num }</td>
 						<td><a href="<c:url value='/detail?num=${vo.num }'/>">${vo.title }</a></td>
-						<td>${vo.regdate }</td>
 						<td>${vo.getComm }</td>
+						<td>${vo.recomm }</td>
+						<td>${vo.hit }</td>
+						<td>${vo.writer }</td>
+						<td>${vo.regdate }</td>
 					</tr>
 				</c:forEach>
 			</tbody>
