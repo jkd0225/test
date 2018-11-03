@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jhta.test1.service.GboardService;
@@ -20,9 +19,7 @@ import com.jhta.util.PageUtil;
 public class ListController {
 	@Autowired
 	private GboardService service;
-	@Autowired
-	private GcommentService service2;
-	
+
 	
 	@RequestMapping("/list")
 	public String list(@RequestParam(value="pageNum",defaultValue="1")int pageNum,String sort, String field, String keyword, Model model) {
@@ -36,11 +33,7 @@ public class ListController {
 		map.put("startRow", pu.getStartRow());
 		map.put("endRow", pu.getEndRow());
 		List<GboardVo> list =  service.list(map);
-		
-		for(GboardVo vo : list) {
-			vo.setGetComm(service2.getCount(vo.getNum()));
-		}
-		
+				
 		model.addAttribute("list", list);
 		model.addAttribute("pu", pu);
 		model.addAttribute("field", field);

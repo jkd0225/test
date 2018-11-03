@@ -20,6 +20,24 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
+	<!-- 파일업로드 (주의 : id속성이 반드시 multipartResolver이어야 한다.) -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 최대업로드 크기 설정(byte단위) -->
+		<beans:property name="maxUploadSize" value="5242880" />
+	</beans:bean>
+
+	<!-- 파일다운로드 뷰 -->
+	<beans:bean id="filedownloadView"
+		class="com.jhta.test1.controller.FiledownloadView" />
+
+	<!-- 파일다운로드뷰로 이동하기위한 뷰리절버 등록 -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="1" />
+	</beans:bean>
+
+
 	<!-- tiles설정 -->
 	<beans:bean
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
@@ -37,7 +55,7 @@
 		<beans:property name="viewNames" value=".*" />
 		<beans:property name="viewClass"
 			value="org.springframework.web.servlet.view.tiles3.TilesView" />
-		<beans:property name="order" value="1" />
+		<beans:property name="order" value="2" />
 	</beans:bean>
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
@@ -46,6 +64,7 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="3" />
 	</beans:bean>
 
 	<context:component-scan
@@ -62,6 +81,6 @@
 	<beans:bean id="naverLoginBO"
 		class="com.jhta.test1.controller.NaverLoginBO" />
 
-	
-	
+
+
 </beans:beans>

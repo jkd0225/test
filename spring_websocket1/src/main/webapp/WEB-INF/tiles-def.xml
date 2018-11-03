@@ -35,6 +35,9 @@
 	<definition name=".naverSuccess" extends=".main">
 		<put-attribute name="content" value="/WEB-INF/views/naverSuccess.jsp"/>
 	</definition>
+	<definition name=".update" extends=".main">
+		<put-attribute name="content" value="/WEB-INF/views/update.jsp"/>
+	</definition>
 	<!-- 
 	<definition name=".admin.memberlist" extends=".main">
 		<put-attribute name="content" value="/WEB-INF/views/admin/memberlist.jsp"/>

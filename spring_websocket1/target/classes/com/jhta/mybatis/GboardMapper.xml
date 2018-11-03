@@ -20,7 +20,7 @@
 				<include refid="search"/>
 				<choose>
 					<when test="sort!=null and sort!=''">
-						order by #{sort} desc
+						order by ${sort} desc
 					</when>
 					<otherwise>
 						order by num desc
@@ -46,7 +46,12 @@
 	<update id="recommUp" parameterType="map">
 		update gboard set recomm = #{recomm} where num = #{num}
 	</update>
-	
+	<update id="commentUp" parameterType="map">
+		update gboard set comments = #{comments} where num = #{num}
+	</update>
+	<update id="update" parameterType="gboard">
+		update gboard set title = #{title}, content = #{content} where num = #{num}
+	</update>
 </mapper>
 
 

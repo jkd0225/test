@@ -37,6 +37,10 @@ public class TboardService {
 	public TboardVo detail(int num) {
 		return dao.detail(num);
 	}
+	
+	public int update(TboardVo vo) {
+		return dao.update(vo);
+	}
 }
 
 

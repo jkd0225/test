@@ -95,8 +95,13 @@
 		$("#data").append("연결끊김");
 	}
 </script>
+<div class="container-fluid" style="margin-bottom: 15px;">
+	<p class="text-left" style="font-size: x-large;">채팅</p>
+	<button type="button" class="btn btn-primary" style="float: right;"
+		onclick="location='<c:url value='/home?room=${room }'/>'">나가기</button>
+</div>
+
 <div class="container-fluid">
-	<h2>Chat Messages</h2>
 	
 		<div id="data">
 		<c:forEach var="vo" items="${list }">
@@ -123,6 +128,5 @@
 	<input type="text" id="name"/>
 	<textarea class="form-control" rows="5" id="message"></textarea>
 	<input type="button" id="sendBtn" value="전송" />
-	<a href="<c:url value='/home?room=${room }'/>">나가기</a>
 </div>
 	

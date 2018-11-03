@@ -11,7 +11,8 @@
 		select NVL(count(num),0) cnt from tiered_board
 	</select>
 	<insert id="insert" parameterType="tboard">
-		insert into tiered_board values(#{num},#{writer},#{title},#{content},#{ref},#{lev},#{step})
+		insert into tiered_board values(#{num},#{writer},#{title},#{content},#{ref},#{lev},#{step},
+		#{orgfilename},#{savefilename},#{filesize})
 	</insert>
 	<update id="insertReply" parameterType="map">
 		<![CDATA[update tiered_board set step=step+1 where ref=#{ref} and step>#{step}]]>
@@ -30,6 +31,10 @@
 	<select id="detail" parameterType="int" resultType="tboard">
 		select * from tiered_board where num=#{num}
 	</select>
+	<update id="update" parameterType="tboard">
+		update tboard set title=#{title}, content=#{content}, orgfilename=#{orgfilename}, savefilename=#{savefilename}, filesize=#{filesize}
+		where num=#{num}
+	</update>
 </mapper>  
 
 

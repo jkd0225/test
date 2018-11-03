@@ -37,6 +37,10 @@ public class TboardDao {
 	public TboardVo detail(int num) {
 		return session.selectOne("com.jhta.mybatis.TboardMapper.detail", num);
 	}
+	
+	public int update(TboardVo vo) {
+		return session.update("com.jhta.mybatis.TboardMapper.update", vo);
+	}
 }
 
 

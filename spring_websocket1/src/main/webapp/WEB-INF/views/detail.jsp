@@ -1,43 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<div class="container-fluid" style="margin-bottom: 15px;">
+	<p class="text-left" style="font-size: x-large;">상세보기</p>
+
+	<form action="<c:url value='/gboardUpdate'/>" method="post">
+		<input type="hidden" name="num" value="${vo.num }"> <input
+			type="hidden" name="title" value="${vo.title }"> <input
+			type="hidden" name="writer" value="${vo.writer }"> <input
+			type="hidden" name="content" value="${vo.content }">
+		<button type="submit" class="btn btn-primary" style="float: right;"
+			onclick="location='<c:url value='/gboardUpdate'/>'">수정</button>
+	</form>
+
+</div>
 
 
-
-	<div class="panel panel-primary" style="overflow: auto;height: 45%;">
+<div class="panel panel-primary" style="overflow: auto; height: 45%;">
 	<div class="panel-heading">${vo.title }
-	
-	<span id="recomm">${vo.recomm }</span>
-	<span class="pull-right">
-		${vo.hit }
-		
-		${vo.regdate }</span>
-<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommDown()" id="btn1">추천취소</button> -->
-<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommUp()" id="btn2">추천</button> -->
-	<c:choose>
-		<c:when test="${isRecomm == 'true' }">
-			<button type="button" class="btn btn-primary pull-right" id="btn3">추천취소</button>
-		</c:when>
-		<c:otherwise>
-			<button type="button" class="btn btn-primary pull-right" id="btn4">추천</button>
-		</c:otherwise>
-	</c:choose>
-			
-		</div>
-    <div class="panel-body">${vo.content }
+
+		<span id="recomm">${vo.recomm }</span> <span class="pull-right">
+			${vo.hit } ${vo.regdate }</span>
+		<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommDown()" id="btn1">추천취소</button> -->
+		<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommUp()" id="btn2">추천</button> -->
+		<c:choose>
+			<c:when test="${isRecomm == 'true' }">
+				<button type="button" class="btn btn-primary pull-right" id="btn3">추천취소</button>
+			</c:when>
+			<c:otherwise>
+				<button type="button" class="btn btn-primary pull-right" id="btn4">추천</button>
+			</c:otherwise>
+		</c:choose>
+
 	</div>
-  	</div>
-  	
-	<div class="panel panel-primary" style="overflow: auto;height: 45%;">
+	<div class="panel-body">${vo.content }</div>
+</div>
+
+<div class="panel panel-primary" style="overflow: auto; height: 45%;">
 	<div class="panel-heading">Comment</div>
-    <div class="panel-body" id="commentList">
-    <c:forEach var="vo" items="${list }">
+	<div class="panel-body" id="commentList">
+		<c:forEach var="vo" items="${list }">
     	${vo.cnum } ${vo.content }<br>
-    </c:forEach>
-    </div>
-    <textarea class="form-control" rows="5" id="comment"></textarea>
-    <button type="button" class="btn btn-primary pull-right" onclick="addComment()">Send</button>
-  	</div>
+		</c:forEach>
+	</div>
+	<textarea class="form-control" rows="5" id="comment"></textarea>
+	<button type="button" class="btn btn-primary pull-right"
+		onclick="addComment()">Send</button>
+</div>
 
 <script type="text/javascript">
 // 	$(document).ready(function(){

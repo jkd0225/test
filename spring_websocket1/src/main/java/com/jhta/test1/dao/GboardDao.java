@@ -41,6 +41,14 @@ public class GboardDao {
 	public int recommUp(Map<String, Object> map) {
 		return session.update("com.jhta.mybatis.GboardMapper.recommUp", map);
 	}
+	
+	public int commentUp(Map<String, Object> map) {
+		return session.update("com.jhta.mybatis.GboardMapper.commentUp", map);
+	}
+	
+	public int update(GboardVo vo) {
+		return session.update("com.jhta.mybatis.GboardMapper.update", vo);
+	}
 }
 
 

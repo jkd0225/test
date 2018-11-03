@@ -3,9 +3,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="s" uri="http://www.springframework.org/security/tags" %>
 
+<div class="container-fluid" style="margin-bottom: 15px;">
+	<p class="text-left" style="font-size: x-large;">계층형 게시판</p>
+	<button type="button" class="btn btn-primary" style="float: right;"
+		onclick="location='<c:url value='/tboardInsert'/>'">글쓰기</button>
+</div>
  
 <div class="container-fluid">
-	<h2>Table</h2>
 	<div class="table-responsive">
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
@@ -33,9 +37,7 @@
 			</tbody>
 		</table>
 	</div>
-		<button type="button" class="btn btn-primary" style="float: right;"
-			onclick="location='<c:url value='/tboardInsert'/>'">글쓰기</button>
-	<br>
+	
 
 	<div class="text-center">
 		<ul class="pagination">

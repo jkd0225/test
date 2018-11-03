@@ -12,9 +12,11 @@
 <div class="container-fluid" style="margin-bottom: 15px;">
 	<div class="btn-group btn-group">
 		<button type="button" class="btn btn-primary"
-		onclick='location.href="<c:url value='/list?sort=content'/>"'>Apple</button>
-		<button type="button" class="btn btn-primary">Samsung</button>
-		<button type="button" class="btn btn-primary">Sony</button>
+		onclick='location.href="<c:url value='/list?sort=hit'/>"'>조회수</button>
+		<button type="button" class="btn btn-primary"
+		onclick='location.href="<c:url value='/list?sort=recomm'/>"'>추천수</button>
+		<button type="button" class="btn btn-primary"
+		onclick='location.href="<c:url value='/list?sort=comments'/>"'>코멘트수</button>
 	</div>
 
 	<form method="post" action="<c:url value='/list'/>"
@@ -61,7 +63,7 @@
 					<tr>
 						<td>${vo.num }</td>
 						<td><a href="<c:url value='/detail?num=${vo.num }'/>">${vo.title }</a></td>
-						<td>${vo.getComm }</td>
+						<td>${vo.comments }</td>
 						<td>${vo.recomm }</td>
 						<td>${vo.hit }</td>
 						<td>${vo.writer }</td>

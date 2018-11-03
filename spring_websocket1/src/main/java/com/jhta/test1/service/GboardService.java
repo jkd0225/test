@@ -41,6 +41,14 @@ public class GboardService {
 	public int recommUp(Map<String, Object> map) {
 		return dao.recommUp(map);
 	}
+	
+	public int commentUp(Map<String, Object> map) {
+		return dao.commentUp(map);
+	}
+	
+	public int update(GboardVo vo) {
+		return dao.update(vo);
+	}
 }
 
 

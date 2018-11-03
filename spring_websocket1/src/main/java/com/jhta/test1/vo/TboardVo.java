@@ -8,11 +8,17 @@ public class TboardVo {
 	private int ref;
 	private int lev;
 	private int step;
-	
+	private String orgfilename;
+	private String savefilename;
+	private long filesize;
+
 	public TboardVo() {
 	}
 
-	public TboardVo(int num, String writer, String title, String content, int ref, int lev, int step) {
+	
+	
+	public TboardVo(int num, String writer, String title, String content, int ref, int lev, int step,
+			String orgfilename, String savefilename, long filesize) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -21,6 +27,35 @@ public class TboardVo {
 		this.ref = ref;
 		this.lev = lev;
 		this.step = step;
+		this.orgfilename = orgfilename;
+		this.savefilename = savefilename;
+		this.filesize = filesize;
+	}
+
+
+
+	public String getOrgfilename() {
+		return orgfilename;
+	}
+
+	public void setOrgfilename(String orgfilename) {
+		this.orgfilename = orgfilename;
+	}
+
+	public String getSavefilename() {
+		return savefilename;
+	}
+
+	public void setSavefilename(String savefilename) {
+		this.savefilename = savefilename;
+	}
+
+	public long getFilesize() {
+		return filesize;
+	}
+
+	public void setFilesize(long filesize) {
+		this.filesize = filesize;
 	}
 
 	public int getNum() {
@@ -78,6 +113,5 @@ public class TboardVo {
 	public void setStep(int step) {
 		this.step = step;
 	}
-	
-	
+
 }

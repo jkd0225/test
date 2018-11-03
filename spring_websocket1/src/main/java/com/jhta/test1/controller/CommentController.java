@@ -1,6 +1,8 @@
 package com.jhta.test1.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.jhta.test1.service.GboardService;
 import com.jhta.test1.service.GcommentService;
 import com.jhta.test1.vo.GcommentVo;
 
@@ -18,6 +21,8 @@ import com.jhta.test1.vo.GcommentVo;
 public class CommentController {
 	@Autowired
 	private GcommentService service;
+	@Autowired
+	private GboardService service2;
 	
 	@RequestMapping(value="/commentInsert",produces="application/json;charset=utf-8")
 	@ResponseBody
@@ -26,6 +31,11 @@ public class CommentController {
 		String comment = req.getParameter("comment");
 		GcommentVo vo = new GcommentVo(0, comment, num, null);
 		int n = service.insert(vo);
+		int comments = service.getCount(num);
+		Map<String, Object> map = new HashMap<>();
+		map.put("num", num);
+		map.put("comments", comments);
+		service2.commentUp(map);
 		
 		JsonObject obj = new JsonObject();
 		if(n>0) {
