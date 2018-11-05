@@ -4,15 +4,17 @@
 <div class="container-fluid" style="margin-bottom: 15px;">
 	<p class="text-left" style="font-size: x-large;">상세보기</p>
 
+	<button type="submit" class="btn btn-primary" style="float: right;"
+		onclick="location='<c:url value='/gboardDelete?num=${vo.num }'/>'">삭제</button>
 	<form action="<c:url value='/gboardUpdate'/>" method="post">
 		<input type="hidden" name="num" value="${vo.num }"> <input
 			type="hidden" name="title" value="${vo.title }"> <input
 			type="hidden" name="writer" value="${vo.writer }"> <input
 			type="hidden" name="content" value="${vo.content }">
-		<button type="submit" class="btn btn-primary" style="float: right;"
+		<button type="submit" class="btn btn-primary"
+			style="float: right; margin-right: 10px;"
 			onclick="location='<c:url value='/gboardUpdate'/>'">수정</button>
 	</form>
-
 </div>
 
 
@@ -44,6 +46,7 @@
 		</c:forEach>
 	</div>
 	<textarea class="form-control" rows="5" id="comment"></textarea>
+	<div><span id="count">0</span>/<span id="max-count">0</span></div>
 	<button type="button" class="btn btn-primary pull-right"
 		onclick="addComment()">Send</button>
 </div>
@@ -137,6 +140,34 @@
 		});
 	}
 	
+	document.getElementById('comment').addEventListener('keyup',checkByte);
+	var countSpan = document.getElementById('count');
+	var message = '';
+	var MAX_MESSAGE_BYTE = 100;
+	document.getElementById('max-count').innerHTML = MAX_MESSAGE_BYTE.toString();
+	
+	function count(message){
+		var totalByte = 0;
+		
+		for(var index = 0, length = message.length; index < length; index++){
+			var currentByte = message.charCodeAt(index);
+			(currentByte > 128) ? totalByte += 2 : totalByte++;
+		}
+		return totalByte;
+	}
+	
+	function checkByte(event){
+		const totalByte = count(event.target.value);
+		
+		if(totalByte <= MAX_MESSAGE_BYTE){
+			countSpan.innerText = totalByte.toString();
+			message = event.target.value;
+		}else{
+			alert(MAX_MESSAGE_BYTE + "바이트까지 전송가능합니다.");
+			countSpan.innerText = count(message).toString();
+			event.target.value = message;
+		}
+	}
 </script>
 
 

@@ -12,11 +12,11 @@
 <div class="container-fluid" style="margin-bottom: 15px;">
 	<div class="btn-group btn-group">
 		<button type="button" class="btn btn-primary"
-		onclick='location.href="<c:url value='/list?sort=hit'/>"'>조회수</button>
+			onclick='location.href="<c:url value='/list?sort=hit'/>"'>조회수</button>
 		<button type="button" class="btn btn-primary"
-		onclick='location.href="<c:url value='/list?sort=recomm'/>"'>추천수</button>
+			onclick='location.href="<c:url value='/list?sort=recomm'/>"'>추천수</button>
 		<button type="button" class="btn btn-primary"
-		onclick='location.href="<c:url value='/list?sort=comments'/>"'>코멘트수</button>
+			onclick='location.href="<c:url value='/list?sort=comments'/>"'>코멘트수</button>
 	</div>
 
 	<form method="post" action="<c:url value='/list'/>"
@@ -47,33 +47,29 @@
 
 	<div class="table-responsive">
 		<table class="table table-bordered table-striped table-hover">
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>title</th>
-					<th>코멘트</th>
-					<th>추천수</th>
-					<th>조회수</th>
-					<th>작성자</th>
-					<th>date</th>
-				</tr>
-			</thead>
 			<tbody>
 				<c:forEach var="vo" items="${list }">
-					<tr>
-						<td>${vo.num }</td>
-						<td><a href="<c:url value='/detail?num=${vo.num }'/>">${vo.title }</a></td>
-						<td>${vo.comments }</td>
-						<td>${vo.recomm }</td>
-						<td>${vo.hit }</td>
-						<td>${vo.writer }</td>
-						<td>${vo.regdate }</td>
+					<c:choose>
+						<c:when test="${vo.comments != 0 }">
+							<tr style="border-left: 5px solid #337ab7">
+						</c:when>
+						<c:otherwise>
+							<tr style="border-left: 5px solid #D3D3D3">
+						</c:otherwise>
+					</c:choose>
+					<td style="width: 5%">${vo.num }</td>
+					<td style="width: 44%"><a href="<c:url value='/detail?num=${vo.num }'/>">${vo.title }</a></td>
+					<td style="width: 7%"><i class='fas fa-comment'></i> ${vo.comments }</td>
+					<td style="width: 7%"><i class='fas fa-thumbs-up'></i> ${vo.recomm }</td>
+					<td style="width: 7%"><i class='fas fa-eye'></i> ${vo.hit }</td>
+					<td style="width: 15%">${vo.writer }</td>
+					<td style="width: 15%">${vo.regdate }</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
-	
+
 	<div class="text-center">
 		<ul class="pagination">
 			<c:choose>

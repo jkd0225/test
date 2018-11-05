@@ -27,7 +27,7 @@
 		value="${vo.orgfilename }">
 	</div>
 	<div class="form-group">
-		<input type="file" name="file" class="form-control">
+		<input type="file" name="file1" class="form-control">
 	</div>
 	<button type="submit" id="submit" name="submit"
 		class="btn btn-primary pull-right">Submit Form</button>

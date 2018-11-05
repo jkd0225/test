@@ -49,6 +49,10 @@ public class GboardService {
 	public int update(GboardVo vo) {
 		return dao.update(vo);
 	}
+	
+	public int delete(int num) {
+		return dao.delete(num);
+	}
 }
 
 

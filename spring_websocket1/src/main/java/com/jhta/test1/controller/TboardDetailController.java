@@ -66,7 +66,7 @@ public class TboardDetailController {
 			return "redirect:/tboardList";
 			
 		}catch(Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 			return "error";
 		}
 	}

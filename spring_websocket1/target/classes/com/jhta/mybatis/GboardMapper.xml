@@ -53,6 +53,9 @@
 	<update id="update" parameterType="gboard">
 		update gboard set title = #{title}, content = #{content} where num = #{num}
 	</update>
+	<delete id="delete" parameterType="int">
+		delete from gboard where num = #{num}
+	</delete>
 </mapper>
 
 

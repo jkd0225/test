@@ -49,6 +49,10 @@ public class GboardDao {
 	public int update(GboardVo vo) {
 		return session.update("com.jhta.mybatis.GboardMapper.update", vo);
 	}
+	
+	public int delete(int num) {
+		return session.delete("com.jhta.mybatis.GboardMapper.delete", num);
+	}
 }
 
 
