@@ -15,26 +15,23 @@
 <div class="panel panel-primary" style="overflow: auto; height: 45%;">
 	<div class="panel-heading">${vo.title }
 		<div class="panel-body">${vo.content }</div>
+	</div>
+	<a
+		href="${pageContext.request.contextPath}/resources/upload/${vo.savefilename}"
+		target="_blank"> <img class="img-thumbnail" alt=""
+		src="${pageContext.request.contextPath}/resources/upload/${vo.savefilename}"
+		width="304" height="236">
+	</a>
 
-	</div>
-	<div class="thumbnail">
-		<a
-			href="${pageContext.request.contextPath}/resources/upload/${vo.savefilename}"
-			target="_blank"> <img alt=""
-			src="${pageContext.request.contextPath}/resources/upload/${vo.savefilename}"
-			style="width: 20%;">
-		</a>
-	</div>
 </div>
-<div class="form-group">
-	<input type="text" name="orgfilename" class="form-control"
-		value="${vo.orgfilename }"> <a
-		href="<c:url value='/fileDownload?num=${vo.num }'/>">다운로드</a>
+<div class="form-control" style="margin-bottom: 15px;">
+	 <a 
+		href="<c:url value='/fileDownload?num=${vo.num }'/>">${vo.orgfilename }</a>
+		<span class="pull-right">${vo.filesize }</span>
 </div>
 
 <button type="button" class="btn btn-primary" style="float: right;"
 	onclick="location='<c:url value='/tboardInsert?num=${vo.num }&ref=${vo.ref}&lev=${vo.lev}&step=${vo.step}'/>'">답글</button>
-
 
 
 

@@ -17,39 +17,70 @@
 	</form>
 </div>
 
+<div class="container-fluid"
+	style="overflow: auto; height: 45%; border: solid 1px #337ab7; border-radius: 5px; margin-bottom: 15px;">
+	<div class="panel-heading">${vo.writer }
+		<div class="pull-right">
+			<span id="recomm">${vo.recomm }</span> <i class='fas fa-eye'></i>
+			${vo.hit } ${vo.regdate }
 
-<div class="panel panel-primary" style="overflow: auto; height: 45%;">
-	<div class="panel-heading">${vo.title }
-
-		<span id="recomm">${vo.recomm }</span> <span class="pull-right">
-			${vo.hit } ${vo.regdate }</span>
+		</div>
 		<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommDown()" id="btn1">추천취소</button> -->
 		<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommUp()" id="btn2">추천</button> -->
 		<c:choose>
 			<c:when test="${isRecomm == 'true' }">
-				<button type="button" class="btn btn-primary pull-right" id="btn3">추천취소</button>
+				<button type="button" class="btn-xs btn-primary pull-right"
+					id="btn3">
+					<i class='fas fa-thumbs-up'></i>
+				</button>
 			</c:when>
 			<c:otherwise>
-				<button type="button" class="btn btn-primary pull-right" id="btn4">추천</button>
+				<button type="button" class="btn btn-primary pull-right" id="btn4">
+					<i class='fas fa-thumbs-down'></i>
+				</button>
 			</c:otherwise>
 		</c:choose>
+		<hr style="border: solid 1px #337ab7;">
 
+
+		<div>
+			${vo.title }
+			<hr style="border: solid 1px #337ab7;">
+
+		</div>
 	</div>
 	<div class="panel-body">${vo.content }</div>
 </div>
 
-<div class="panel panel-primary" style="overflow: auto; height: 45%;">
-	<div class="panel-heading">Comment</div>
+<div class="container-fluid"
+	style="overflow: auto; height: 40%; border: solid 1px #337ab7; border-radius: 5px;">
+	<div class="panel-heading">
+		Comment
+		<hr style="border: solid 1px #337ab7;">
+	</div>
+
 	<div class="panel-body" id="commentList">
-		<c:forEach var="vo" items="${list }">
-    	${vo.cnum } ${vo.content }<br>
-		</c:forEach>
+			<c:forEach var="vo" items="${list }">
+				<div class="panel panel-primary">
+					<div class="panel-heading">${vo.cnum }</div>
+					<div class="panel-body">${vo.content }</div>
+				</div>
+			</c:forEach>
 	</div>
 	<textarea class="form-control" rows="5" id="comment"></textarea>
-	<div><span id="count">0</span>/<span id="max-count">0</span></div>
+	<div>
+		<span id="count">0</span>/<span id="max-count">0</span>
+	</div>
 	<button type="button" class="btn btn-primary pull-right"
 		onclick="addComment()">Send</button>
 </div>
+
+<script id="template-list-item" type="text/template">
+	<div class="panel panel-primary">
+		<div class="panel-heading">{cnum}</div>
+		<div class="panel-body">{content}</div>
+	</div>
+</script>
 
 <script type="text/javascript">
 // 	$(document).ready(function(){
@@ -66,7 +97,7 @@
 			success:function(data){
 				recomm = data.recomm;
 				$("#btn4").attr("id","btn3");
-				$("#btn3").text("추천취소");
+				$("#btn3").html("<i class='fas fa-thumbs-up'></i>");
 				$("#recomm").text(recomm);
 			}
 		});
@@ -78,7 +109,7 @@
 			dataType:'json',
 			success:function(data){
 				$("#btn3").attr("id","btn4");
-				$("#btn4").text("추천");
+				$("#btn4").html("<i class='fas fa-thumbs-down'></i>");
 				$("#recomm").text(recomm - 1);
 			}
 		});
@@ -110,19 +141,24 @@
 // 			}
 // 		});
 // 	}
-
 	function getList() {
 		$.ajax({
 			url:"<c:url value='/comment?num=${vo.num }'/>",
 			dataType:'json',
 			success:function(data){
 				$("#commentList").empty();
+				var html = document.querySelector("#template-list-item").innerHTML;
+				var resultHTML = "";
 				$(data).each(function(i, json){
-					var div = document.createElement("div");
-					var str = json.cnum + " " + json.content + "<br>";
-					$(div).html(str);
-					$("#commentList").append(div);
+					resultHTML += html.replace("{cnum}", json.cnum)
+										.replace("{content}", json.content);
+					
+// 					var div = document.createElement("div");
+// 					var str = json.cnum + " " + json.content + "<br>";
+// 					$(div).html(str);
+// 					$("#commentList").append(div);
 				});
+				document.querySelector("#commentList").innerHTML = resultHTML;
 			}
 		});
 	}
