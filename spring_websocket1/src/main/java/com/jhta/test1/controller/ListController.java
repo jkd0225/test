@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jhta.test1.service.GboardService;
-import com.jhta.test1.service.GcommentService;
 import com.jhta.test1.vo.GboardVo;
 import com.jhta.util.PageUtil;
 

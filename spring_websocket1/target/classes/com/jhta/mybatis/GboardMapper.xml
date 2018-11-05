@@ -8,8 +8,9 @@
 			where ${field} like '%'|| #{keyword} ||'%'
 		</if>
 	</sql>
+	
 	<insert id="insert" parameterType="gboard">
-		insert into gboard values(gboard_seq.nextval,#{title},#{content},sysdate,0,0,#{writer})
+		insert into gboard values(gboard_seq.nextval,#{title},#{content},sysdate,0,0,#{writer},0)
 	</insert>
 	<select id="list" parameterType="map" resultType="gboard">
 		select * from

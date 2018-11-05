@@ -12,7 +12,7 @@
 	</select>
 	<insert id="insert" parameterType="tboard">
 		insert into tiered_board values(#{num},#{writer},#{title},#{content},#{ref},#{lev},#{step},
-		#{orgfilename},#{savefilename},#{filesize})
+		#{orgfilename},#{savefilename},#{filesize},#{uploadpath})
 	</insert>
 	<update id="insertReply" parameterType="map">
 		<![CDATA[update tiered_board set step=step+1 where ref=#{ref} and step>#{step}]]>
@@ -32,7 +32,7 @@
 		select * from tiered_board where num=#{num}
 	</select>
 	<update id="update" parameterType="tboard">
-		update tboard set title=#{title}, content=#{content}, orgfilename=#{orgfilename}, savefilename=#{savefilename}, filesize=#{filesize}
+		update tiered_board set title=#{title}, content=#{content}, orgfilename=#{orgfilename}, savefilename=#{savefilename}, filesize=#{filesize}
 		where num=#{num}
 	</update>
 </mapper>  

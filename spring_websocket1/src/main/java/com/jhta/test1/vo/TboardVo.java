@@ -11,14 +11,13 @@ public class TboardVo {
 	private String orgfilename;
 	private String savefilename;
 	private long filesize;
+	private String uploadpath;
 
 	public TboardVo() {
 	}
 
-	
-	
 	public TboardVo(int num, String writer, String title, String content, int ref, int lev, int step,
-			String orgfilename, String savefilename, long filesize) {
+			String orgfilename, String savefilename, long filesize, String uploadpath) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -30,9 +29,16 @@ public class TboardVo {
 		this.orgfilename = orgfilename;
 		this.savefilename = savefilename;
 		this.filesize = filesize;
+		this.uploadpath = uploadpath;
 	}
 
+	public String getUploadpath() {
+		return uploadpath;
+	}
 
+	public void setUploadpath(String uploadpath) {
+		this.uploadpath = uploadpath;
+	}
 
 	public String getOrgfilename() {
 		return orgfilename;

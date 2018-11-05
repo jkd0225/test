@@ -23,7 +23,8 @@
 			maxlength="140" rows="7">${vo.content }</textarea>
 	</div>
 	<div class="form-group">
-		<input type="text" name="orgfilename" class="form-control" ${vo.orgfilename }>
+		<input type="text" name="orgfilename" class="form-control" 
+		value="${vo.orgfilename }">
 	</div>
 	<div class="form-group">
 		<input type="file" name="file" class="form-control">

@@ -62,24 +62,24 @@ public class TboardInsert {
 			step += 1;
 		}
 		
-		String uploadPath = session.getServletContext().getRealPath("/resources/upload");
+		String uploadpath = session.getServletContext().getRealPath("/resources/upload");
 		String orgfilename = file1.getOriginalFilename();
 		String savefilename = UUID.randomUUID() + "_" + orgfilename;
 		
 		try {
 			InputStream is = file1.getInputStream();
-			FileOutputStream fos = new FileOutputStream(uploadPath + "\\" + savefilename);
+			FileOutputStream fos = new FileOutputStream(uploadpath + "\\" + savefilename);
 			FileCopyUtils.copy(is, fos);
 			is.close();
 			fos.close();
-			System.out.println(uploadPath + "경로에 파일업로드 성공!");
+			System.out.println(uploadpath + "경로에 파일업로드 성공!");
 			long filesize = file1.getSize();
 			TboardVo tboardVo = new TboardVo(boardNum, vo.getWriter(), vo.getTitle(), vo.getContent(), 
-					ref, lev, step,orgfilename,savefilename,filesize);
+					ref, lev, step,orgfilename,savefilename,filesize,uploadpath);
 			service.insert(tboardVo);
 			return "redirect:/tboardList";
 		}catch(Exception ie){
-			ie.getStackTrace();
+			System.out.println(ie.getMessage());
 			return "error";
 		}
 	}
