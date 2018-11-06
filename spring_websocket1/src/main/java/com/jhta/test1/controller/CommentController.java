@@ -15,6 +15,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.jhta.test1.service.GboardService;
 import com.jhta.test1.service.GcommentService;
+import com.jhta.test1.vo.ChatVo;
 import com.jhta.test1.vo.GcommentVo;
 
 @Controller
@@ -53,6 +54,7 @@ public class CommentController {
 		List<GcommentVo> list = service.list(num);
 		JsonArray arr = new JsonArray();
 		for(GcommentVo vo : list) {
+			vo.setContent(vo.getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt").replaceAll("\n", "<br>"));
 			JsonObject json = new JsonObject();
 			json.addProperty("cnum", vo.getCnum());
 			json.addProperty("content", vo.getContent());

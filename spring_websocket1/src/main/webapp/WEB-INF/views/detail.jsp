@@ -82,7 +82,10 @@
 <script id="template-list-item" type="text/template">
 	<div class="panel panel-primary">
 		<div class="panel-heading">{cnum}</div>
-		<div class="panel-body">{content}</div>
+		<div class="panel-body">{content}
+		<button type="button" class="btn btn-primary pull-right"
+						onclick="deleteComment({cnum1})">삭제</button>
+	</div>
 	</div>
 </script>
 
@@ -158,7 +161,8 @@
 				var resultHTML = "";
 				$(data).each(function(i, json){
 					resultHTML += html.replace("{cnum}", json.cnum)
-										.replace("{content}", json.content);
+										.replace("{content}", json.content)
+										.replace("{cnum1}", json.cnum);
 					
 // 					var div = document.createElement("div");
 // 					var str = json.cnum + " " + json.content + "<br>";

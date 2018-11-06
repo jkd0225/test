@@ -27,6 +27,9 @@ public class DetailController {
 		service.hitUp(num);
 		GboardVo vo = service.detail(num);
 		List<GcommentVo> list = service.commentList(num);
+		for(GcommentVo vo2 : list) {
+			vo2.setContent(vo2.getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt").replaceAll("\n", "<br>"));
+		}
 		GrecommVo vo1 = new GrecommVo(0, vo.getWriter(), bnum);
 		
 		if(service2.isRecomm(vo1)==null) {
