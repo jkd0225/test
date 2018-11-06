@@ -92,9 +92,6 @@
 					href="<c:url value='/store?pageNum=${pu.startPageNum - 1 }&field=${field }&keyword=${keyword }&sort=${sort }'/>">
 						<i class="fa fa-chevron-left"></i>
 				</a></li>
-				<li><a
-					href="<c:url value='/store?pageNum=1&field=${field }&keyword=${keyword }&sort=${sort }'/>">1</a></li>
-				<li class="disabled"><a href="">...</a></li>
 			</c:when>
 			<c:otherwise>
 				<li class="disabled"><a href=""> <i
@@ -117,9 +114,6 @@
 
 		<c:choose>
 			<c:when test="${pu.endPageNum < pu.totalPageCount }">
-				<li class="disabled"><a href="">...</a></li>
-				<li><a
-					href="<c:url value='/store?pageNum=${pu.totalPageCount }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${pu.totalPageCount }</a></li>
 				<li><a
 					href="<c:url value='/store?pageNum=${pu.endPageNum + 1 }&field=${field }&keyword=${keyword }&sort=${sort }'/>">
 						<i class="fa fa-chevron-right"></i>

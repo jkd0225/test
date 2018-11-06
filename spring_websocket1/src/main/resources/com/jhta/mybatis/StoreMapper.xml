@@ -17,10 +17,10 @@
 				<include refid="search"/>
 				<choose>
 					<when test="sort!=null and sort!=''">
-						order by ${sort} desc
+						order by ${sort} 
 					</when>
 					<otherwise>
-						order by num desc
+						order by num
 					</otherwise>
 				</choose>
 			)aa
