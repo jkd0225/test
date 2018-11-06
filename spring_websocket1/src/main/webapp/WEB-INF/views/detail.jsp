@@ -35,7 +35,8 @@
 				</button>
 			</c:when>
 			<c:otherwise>
-				<button type="button" class="btn btn-primary pull-right" id="btn4">
+				<button type="button" class="btn-xs btn-primary pull-right"
+					id="btn4">
 					<i class='fas fa-thumbs-down'></i>
 				</button>
 			</c:otherwise>
@@ -52,7 +53,7 @@
 	<div class="panel-body">${vo.content }</div>
 </div>
 
-<div class="container-fluid"
+<div class="container-fluid" id="comments"
 	style="overflow: auto; height: 40%; border: solid 1px #337ab7; border-radius: 5px;">
 	<div class="panel-heading">
 		Comment
@@ -60,12 +61,15 @@
 	</div>
 
 	<div class="panel-body" id="commentList">
-			<c:forEach var="vo" items="${list }">
-				<div class="panel panel-primary">
-					<div class="panel-heading">${vo.cnum }</div>
-					<div class="panel-body">${vo.content }</div>
+		<c:forEach var="vo" items="${list }">
+			<div class="panel panel-primary">
+				<div class="panel-heading">${vo.cnum }</div>
+				<div class="panel-body">${vo.content }
+					<button type="button" class="btn btn-primary pull-right"
+						onclick="deleteComment(${vo.cnum})">삭제</button>
 				</div>
-			</c:forEach>
+			</div>
+		</c:forEach>
 	</div>
 	<textarea class="form-control" rows="5" id="comment"></textarea>
 	<div>
@@ -141,6 +145,9 @@
 // 			}
 // 		});
 // 	}
+	$(document).ready(function(){
+	});
+
 	function getList() {
 		$.ajax({
 			url:"<c:url value='/comment?num=${vo.num }'/>",
@@ -159,9 +166,11 @@
 // 					$("#commentList").append(div);
 				});
 				document.querySelector("#commentList").innerHTML = resultHTML;
+				$('#comments').scrollTop($('#comments')[0].scrollHeight);
 			}
 		});
 	}
+	
 	function addComment(){
 		var num = ${vo.num };
 		$.getJSON("<c:url value='/commentInsert'/>", {
@@ -173,6 +182,21 @@
 				getList();
 			}else
 				console.log("fail");
+		});
+		$('#comment').focus();
+	}
+	
+	function deleteComment(cnum){
+		var num = ${vo.num};
+		$.getJSON("<c:url value='/commentDelete'/>",{
+			"num" : num,
+			"cnum" : cnum
+		}, function(data){
+			if(data.code){
+				getList();
+			}else
+				console.log("fail");
+		
 		});
 	}
 	

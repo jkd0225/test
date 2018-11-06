@@ -60,4 +60,23 @@ public class CommentController {
 		}
 		return arr.toString();
 	}
+	
+	
+	@RequestMapping(value="/commentDelete",produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String delete(int cnum,int num) {
+		int n = service.delete(cnum);
+		int comments = service.getCount(num);
+		Map<String, Object> map = new HashMap<>();
+		map.put("num", num);
+		map.put("comments", comments);
+		service2.commentUp(map);
+		JsonObject obj = new JsonObject();
+		if(n>0) {
+			obj.addProperty("code", true);
+		}else {
+			obj.addProperty("code", false);
+		}
+		return obj.toString();
+	}
 }

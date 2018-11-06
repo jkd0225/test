@@ -12,4 +12,7 @@
 	<select id="getCount" parameterType="int" resultType="int">
 		select NVL(count(cnum),0) cnt from gcomment where bnum = #{num}
 	</select>
+	<delete id="delete" parameterType="int">
+		delete from gcomment where cnum = #{cnum}
+	</delete>
 </mapper>  

@@ -24,4 +24,8 @@ public class GcommentService {
 	public int getCount(int num) {
 		return dao.getCount(num);
 	}
+	
+	public int delete(int cnum) {
+		return dao.delete(cnum);
+	}
 }

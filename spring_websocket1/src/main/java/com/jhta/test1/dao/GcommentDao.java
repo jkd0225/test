@@ -24,4 +24,8 @@ public class GcommentDao {
 	public int getCount(int num) {
 		return session.selectOne("com.jhta.mybatis.GcommentMapper.getCount", num);
 	}
+	
+	public int delete(int cnum) {
+		return session.delete("com.jhta.mybatis.GcommentMapper.delete", cnum);
+	}
 }

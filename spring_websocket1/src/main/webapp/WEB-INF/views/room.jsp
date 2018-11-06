@@ -13,7 +13,7 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading">${vo.room_num }</div>
 			<div class="panel-body">
-				<a href="<c:url value='/chat?room=${vo.room_num }'/>">입장</a>
+				<a href="<c:url value='/chat?room=${vo.room_num }'/>" class="pull-right">입장</a>
 			</div>
 		</div>
 	</div>
