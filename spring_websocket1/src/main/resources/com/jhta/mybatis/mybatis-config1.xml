@@ -11,6 +11,7 @@
 		<typeAlias type="com.jhta.test1.vo.MemberInfoVo" alias="memberInfo"/>
 		<typeAlias type="com.jhta.test1.vo.AuthVo" alias="auth"/>
 		<typeAlias type="com.jhta.test1.vo.TboardVo" alias="tboard"/>
+		<typeAlias type="com.jhta.test1.vo.IconVo" alias="icon"/>
 	</typeAliases>
 	
 	<mappers>
@@ -20,5 +21,6 @@
 		<mapper resource="com/jhta/mybatis/GrecommMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/MemberMapper.xml"/>
 		<mapper resource="com/jhta/mybatis/TboardMapper.xml"/>
+		<mapper resource="com/jhta/mybatis/StoreMapper.xml"/>
 	</mappers>
 </configuration>  

@@ -15,7 +15,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.jhta.test1.service.GboardService;
 import com.jhta.test1.service.GcommentService;
-import com.jhta.test1.vo.ChatVo;
 import com.jhta.test1.vo.GcommentVo;
 
 @Controller

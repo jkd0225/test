@@ -176,10 +176,15 @@
 	}
 	
 	function addComment(){
+		if($("#comment").val() == ""){
+			alert('공백');
+			return;
+		}
 		var num = ${vo.num };
+		var comment = $("#comment").val();
 		$.getJSON("<c:url value='/commentInsert'/>", {
 			"num" : num,
-			"comment" : $("#comment").val()
+			"comment" : comment
 		}, function(data){
 			if(data.code){
 				$("#comment").val("");
@@ -203,6 +208,7 @@
 		
 		});
 	}
+	
 	
 	document.getElementById('comment').addEventListener('keyup',checkByte);
 	var countSpan = document.getElementById('count');

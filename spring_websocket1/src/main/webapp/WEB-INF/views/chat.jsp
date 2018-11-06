@@ -23,6 +23,10 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#sendBtn").click(function() {
+			if ($("#message").val() == "") {
+				alert('공백');
+				return;
+			}
 			sendMessage();
 			$('#message').val('');
 			$('#message').focus();
@@ -36,18 +40,10 @@
 	sock.onclose = onClose;
 	function sendMessage() {
 		message = {};
-		if ($("#message").val() == '') {
-			message.content = ' ';
-		} else {
-			message.content = $("#message").val();
-		}
+		message.content = $("#message").val();
 		message.sender = $("#name").val();
 		message.receiver = 'bbb';
-		message.room = $
-		{
-			room
-		}
-		;
+		message.room = ${room};
 		sock.send(JSON.stringify(message));
 	}
 
@@ -143,9 +139,7 @@
 		<div class="col-sm-8">
 			<div style="border: solid 2px black; height: 900px; padding: 10px;">
 				<div class="container-fluid"
-					style="border: solid 2px black; height: 600px;">
-
-				</div>
+					style="border: solid 2px black; height: 600px;"></div>
 
 				<div class="panel panel-primary" style="margin-top: 10px;">
 					<div class="panel-heading">강좌명</div>
