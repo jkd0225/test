@@ -67,7 +67,7 @@
 						<h4 class="modal-title">상세보기</h4>
 					</div>
 					<div class="modal-body">
-						<img src="<c:url value='/resources/img/'/>${vo.num }.gif"> <strong>${vo.name }</strong>
+						<img src="<c:url value='/resources/img/'/>${vo.num }_front.png" style="width: 100px;"> <strong>${vo.name }</strong>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

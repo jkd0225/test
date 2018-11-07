@@ -6,7 +6,8 @@
 }
 
 * {
-	font-family: neodgm
+	font-family: neodgm;
+	font-size: small;
 }
 
   h3, h4 {

@@ -31,13 +31,13 @@
 			<c:when test="${isRecomm == 'true' }">
 				<button type="button" class="btn-xs btn-primary pull-right"
 					id="btn3">
-					<i class='fas fa-thumbs-up'></i>
+					<i class='fas fa-thumbs-down'></i>
 				</button>
 			</c:when>
 			<c:otherwise>
 				<button type="button" class="btn-xs btn-primary pull-right"
 					id="btn4">
-					<i class='fas fa-thumbs-down'></i>
+					<i class='fas fa-thumbs-up'></i>
 				</button>
 			</c:otherwise>
 		</c:choose>
@@ -45,7 +45,7 @@
 
 
 		<div>
-			${vo.title }
+			<strong>${vo.title }</strong>
 			<hr style="border: solid 1px #337ab7;">
 
 		</div>
@@ -104,7 +104,7 @@
 			success:function(data){
 				recomm = data.recomm;
 				$("#btn4").attr("id","btn3");
-				$("#btn3").html("<i class='fas fa-thumbs-up'></i>");
+				$("#btn3").html("<i class='fas fa-thumbs-down'></i>");
 				$("#recomm").text(recomm);
 			}
 		});
@@ -116,7 +116,7 @@
 			dataType:'json',
 			success:function(data){
 				$("#btn3").attr("id","btn4");
-				$("#btn4").html("<i class='fas fa-thumbs-down'></i>");
+				$("#btn4").html("<i class='fas fa-thumbs-up'></i>");
 				$("#recomm").text(recomm - 1);
 			}
 		});
