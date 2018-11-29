@@ -4,49 +4,48 @@
 <div class="container-fluid" style="margin-bottom: 15px;">
 	<p class="text-left" style="font-size: x-large;">상세보기</p>
 
-	<button type="submit" class="btn btn-primary" style="float: right;"
+	<button type="submit" class="btn btn-default" style="float: right;"
 		onclick="location='<c:url value='/gboardDelete?num=${vo.num }'/>'">삭제</button>
 	<form action="<c:url value='/gboardUpdate'/>" method="post">
 		<input type="hidden" name="num" value="${vo.num }"> <input
 			type="hidden" name="title" value="${vo.title }"> <input
 			type="hidden" name="writer" value="${vo.writer }"> <input
 			type="hidden" name="content" value="${vo.content }">
-		<button type="submit" class="btn btn-primary"
+		<button type="submit" class="btn btn-default"
 			style="float: right; margin-right: 10px;"
 			onclick="location='<c:url value='/gboardUpdate'/>'">수정</button>
 	</form>
 </div>
 
 <div class="container-fluid"
-	style="overflow: auto; height: 45%; border: solid 1px #337ab7; border-radius: 5px; margin-bottom: 15px;">
+	style="overflow: auto; height: 45%; border: solid 1px #fff; border-radius: 5px; margin-bottom: 15px;">
 	<div class="panel-heading">${vo.writer }
 		<div class="pull-right">
 			<span id="recomm">${vo.recomm }</span> <i class='fas fa-eye'></i>
 			${vo.hit } ${vo.regdate }
-
 		</div>
-		<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommDown()" id="btn1">추천취소</button> -->
-		<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommUp()" id="btn2">추천</button> -->
+		<!-- 	<button type="button" class="btn btn-default pull-right" onclick="recommDown()" id="btn1">추천취소</button> -->
+		<!-- 	<button type="button" class="btn btn-default pull-right" onclick="recommUp()" id="btn2">추천</button> -->
 		<c:choose>
 			<c:when test="${isRecomm == 'true' }">
-				<button type="button" class="btn-xs btn-primary pull-right"
+				<button type="button" class="btn-xs btn-default pull-right"
 					id="btn3">
 					<i class='fas fa-thumbs-down'></i>
 				</button>
 			</c:when>
 			<c:otherwise>
-				<button type="button" class="btn-xs btn-primary pull-right"
+				<button type="button" class="btn-xs btn-default pull-right"
 					id="btn4">
 					<i class='fas fa-thumbs-up'></i>
 				</button>
 			</c:otherwise>
 		</c:choose>
-		<hr style="border: solid 1px #337ab7;">
+		<hr style="border: solid 1px #fff;">
 
 
 		<div>
 			<strong>${vo.title }</strong>
-			<hr style="border: solid 1px #337ab7;">
+			<hr style="border: solid 1px #fff;">
 
 		</div>
 	</div>
@@ -54,18 +53,18 @@
 </div>
 
 <div class="container-fluid" id="comments"
-	style="overflow: auto; height: 40%; border: solid 1px #337ab7; border-radius: 5px;">
+	style="overflow: auto; height: 40%; border: solid 1px #fff; border-radius: 5px;">
 	<div class="panel-heading">
 		Comment
-		<hr style="border: solid 1px #337ab7;">
+		<hr style="border: solid 1px #fff;">
 	</div>
 
 	<div class="panel-body" id="commentList">
 		<c:forEach var="vo" items="${list }">
-			<div class="panel panel-primary">
+			<div class="panel panel-default">
 				<div class="panel-heading">${vo.cnum }</div>
 				<div class="panel-body">${vo.content }
-					<button type="button" class="btn btn-primary pull-right"
+					<button type="button" class="btn btn-default pull-right"
 						onclick="deleteComment(${vo.cnum})">삭제</button>
 				</div>
 			</div>
@@ -75,15 +74,15 @@
 	<div>
 		<span id="count">0</span>/<span id="max-count">0</span>
 	</div>
-	<button type="button" class="btn btn-primary pull-right"
+	<button type="button" class="btn btn-default pull-right"
 		onclick="addComment()">Send</button>
 </div>
 
 <script id="template-list-item" type="text/template">
-	<div class="panel panel-primary">
+	<div class="panel panel-default">
 		<div class="panel-heading">{cnum}</div>
 		<div class="panel-body">{content}
-		<button type="button" class="btn btn-primary pull-right"
+		<button type="button" class="btn btn-default pull-right"
 						onclick="deleteComment({cnum1})">삭제</button>
 	</div>
 	</div>

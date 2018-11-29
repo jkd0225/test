@@ -5,10 +5,10 @@
 
 <div class="container-fluid" style="margin-bottom: 15px;">
 	<p class="text-left" style="font-size: x-large;">계층형 게시판</p>
-	<button type="button" class="btn btn-primary" style="float: right;"
+	<button type="button" class="btn" style="float: right;"
 		onclick="location='<c:url value='/tboardInsert'/>'">글쓰기</button>
 </div>
- 
+
 <div class="container-fluid">
 	<div class="table-responsive">
 		<table class="table table-bordered table-striped table-hover">

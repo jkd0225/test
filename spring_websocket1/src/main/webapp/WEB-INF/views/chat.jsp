@@ -137,23 +137,22 @@
 			<input type="button" id="sendBtn" value="전송" />
 		</div>
 		<div class="col-sm-8">
-			<div style="border: solid 2px black; height: 900px; padding: 10px;">
+			<div style="border: solid 2px #fff; height: 900px; padding: 10px;">
 				<div class="container-fluid"
-					style="border: solid 2px black; height: 600px;"></div>
+					style="border: solid 2px #fff; height: 600px;"></div>
 
-				<div class="panel panel-primary" style="margin-top: 10px;">
+				<div class="panel panel-default" style="margin-top: 10px;">
 					<div class="panel-heading">강좌명</div>
 					<div class="panel-body" style="height: 160px;">내용</div>
 				</div>
 
 				<div class="btn-group btn-group-justified">
-					<a href="#" class="btn btn-primary">Apple</a> <a href="#"
-						class="btn btn-primary">Samsung</a> <a
+					<a href="#" class="btn btn-default">Apple</a> <a href="#"
+						class="btn btn-default">Samsung</a> <a
 						href='<c:url value="/home?room=${room }"/>'
-						class="btn btn-primary">나가기</a>
+						class="btn btn-default">나가기</a>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
